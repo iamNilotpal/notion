@@ -1,3 +1,4 @@
+import ConvexProvider from '@/components/ConvexProvider';
 import ThemeProvider from '@/components/ThemeProvider';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
@@ -22,13 +23,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={poppins.className}>
-        <ThemeProvider
-          enableSystem
-          attribute="class"
-          storageKey="theme"
-          defaultTheme="system">
-          {children}
-        </ThemeProvider>
+        <ConvexProvider>
+          <ThemeProvider
+            enableSystem
+            attribute="class"
+            storageKey="theme"
+            defaultTheme="system">
+            {children}
+          </ThemeProvider>
+        </ConvexProvider>
       </body>
     </html>
   );

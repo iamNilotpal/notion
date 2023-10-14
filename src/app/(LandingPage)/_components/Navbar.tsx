@@ -1,13 +1,17 @@
 'use client';
 
+import Spinner from '@/components/Spinner';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import { Button } from '@/components/ui/button';
 import useScrollTop from '@/hooks/useScrollTop';
 import { cn } from '@/lib/utils';
-import React from 'react';
+import { SignInButton, UserButton } from '@clerk/clerk-react';
+import { useConvexAuth } from 'convex/react';
+import Link from 'next/link';
 
 const Navbar = () => {
   const scrolled = useScrollTop();
+  const { isAuthenticated, isLoading } = useConvexAuth();
 
   return (
     <nav
@@ -16,10 +20,20 @@ const Navbar = () => {
         scrolled && 'border-b shadow-sm'
       )}>
       <div className="flex justify-between items-center w-full">
-        <h1 className="font-bold text-lg">Notion.</h1>
+        <h1 className="font-bold text-lg">
+          <Link href="/">Notion.</Link>
+        </h1>
         <div className="flex items-center gap-[10px]">
+          {isLoading && <Spinner />}
+          {!isLoading && !isAuthenticated && (
+            <SignInButton mode="modal">
+              <Button className="py-2 px-6">Login</Button>
+            </SignInButton>
+          )}
+          {isAuthenticated && !isLoading && (
+            <UserButton showName afterSignOutUrl="/" />
+          )}
           <ThemeSwitcher />
-          <Button className="py-2 px-6">Login</Button>
         </div>
       </div>
     </nav>
