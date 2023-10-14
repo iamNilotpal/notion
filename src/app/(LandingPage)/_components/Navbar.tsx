@@ -24,7 +24,7 @@ const Navbar = () => {
           <Link href="/">Notion.</Link>
         </h1>
         <div className="flex items-center gap-[10px]">
-          {isLoading && <Spinner />}
+          {isLoading && <Spinner className="mr-2" />}
           {!isLoading && !isAuthenticated && (
             <SignInButton mode="modal">
               <Button className="py-2 px-6">Login</Button>

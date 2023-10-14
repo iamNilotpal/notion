@@ -16,8 +16,11 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   if (isLoading)
     return (
-      <main className="h-screen flex items-center justify-center">
+      <main className="h-screen flex items-center justify-center flex-col gap-1">
         <Spinner size="lg" />
+        <h1 className="text-base font-[600] text-[#1c0306]">
+          Please wait while we get things ready for you.
+        </h1>
       </main>
     );
 
