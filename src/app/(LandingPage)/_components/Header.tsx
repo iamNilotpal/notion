@@ -11,7 +11,7 @@ const Header = () => {
         Notion is the connected workspace where better, faster work happens.
       </p>
       <Button>
-        <span className="mr-2">Get Into Notion</span>
+        <span className="mr-2">Get Notion For Free</span>
         <ArrowRight size={20} />
       </Button>
     </header>
