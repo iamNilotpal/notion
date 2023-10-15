@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import Spinner from '@/components/spinner';
-import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import Spinner from "@/components/spinner";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { SignOutButton, useUser } from '@clerk/clerk-react';
-import { ChevronsLeftRight, LogOut } from 'lucide-react';
+} from "@/components/ui/dropdown-menu";
+import { SignOutButton, useUser } from "@clerk/clerk-react";
+import { ChevronsLeftRight, LogOut } from "lucide-react";
 
 const UserActionItem = () => {
   const { isLoaded, user } = useUser();
@@ -23,12 +23,13 @@ const UserActionItem = () => {
       <DropdownMenuTrigger asChild>
         <div
           role="button"
-          className="flex items-center text-sm p-3 w-full hover:bg-primary/5">
+          className="flex items-center text-sm p-3 w-full hover:bg-primary/5"
+        >
           <div className="gap-2 flex items-center max-w-[150px]">
             <Avatar className="w-5 h-5">
               <AvatarImage
                 src={user.imageUrl}
-                alt={user.fullName + ' avatar'}
+                alt={user.fullName + " avatar"}
               />
             </Avatar>
             <span className="text-start font-[600] line-clamp-1">
@@ -44,7 +45,7 @@ const UserActionItem = () => {
             <Avatar className="w-10 h-10">
               <AvatarImage
                 src={user.imageUrl}
-                alt={user.fullName + ' avatar'}
+                alt={user.fullName + " avatar"}
               />
             </Avatar>
             <div className="flex flex-col">

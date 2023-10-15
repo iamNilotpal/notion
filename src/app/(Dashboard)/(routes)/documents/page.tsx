@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import CreateNewDocument from './create-new';
-import Greeting from './greeting';
+import Image from "next/image";
+import CreateNewDocument from "./_components/create-new";
+import Greeting from "./_components/greeting";
 
 const DocumentPage = () => {
   return (

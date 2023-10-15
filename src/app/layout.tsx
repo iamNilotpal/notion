@@ -25,7 +25,14 @@ export default function RootLayout({
       <body className={poppins.className}>
         <ConvexProvider>
           {children}
-          <Toaster />
+          <Toaster
+            expand
+            richColors
+            closeButton
+            duration={2000}
+            className={poppins.className}
+            toastOptions={{ style: { ...poppins.style } }}
+          />
         </ConvexProvider>
       </body>
     </html>
