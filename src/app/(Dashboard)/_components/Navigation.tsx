@@ -2,14 +2,15 @@
 
 import { cn } from "@/lib/utils";
 import { useMutation } from "convex/react";
-import { PlusCircleIcon, SearchIcon, Settings } from "lucide-react";
+import { Plus, PlusCircleIcon, SearchIcon, Settings } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React, { ElementRef, useRef, useState } from "react";
 import { toast } from "sonner";
 import { api } from "../../../../convex/_generated/api";
 import ActionItem from "./action-item";
-import UserActionItem from "./user-action";
 import Documents from "./documents";
-import { useRouter } from "next/navigation";
+import TrashItems from "./trash-items";
+import UserActionItem from "./user-action";
 
 const Navigation = () => {
   const router = useRouter();
@@ -92,6 +93,13 @@ const Navigation = () => {
       />
       <div className="mt-4">
         <Documents />
+        <ActionItem
+          icon={Plus}
+          label="Add a page"
+          disabled={creating}
+          onClick={handleCreateDocument}
+        />
+        <TrashItems />
       </div>
       <div
         onMouseDown={handleMouseDown}

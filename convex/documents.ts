@@ -57,14 +57,14 @@ export const deleteDoc = mutation({
     if (!doc) throw new Error("Document not found.");
     if (doc.userId !== userId) throw new Error("Forbidden.");
 
-    if (doc.parentDocument)
-      await ctx.db.patch(doc.parentDocument, {
-        childDocsCount: doc.childDocsCount - 1,
-      });
+    // if (doc.parentDocument)
+    //   await ctx.db.patch(doc.parentDocument, {
+    //     childDocsCount: doc.childDocsCount - 1,
+    //   });
 
     await ctx.db.patch(doc._id, {
       isDeleted: true,
-      ...(!doc.parentDocument && { childDocsCount: doc.childDocsCount - 1 }),
+      // ...(!doc.parentDocument && { childDocsCount: doc.childDocsCount - 1 }),
     });
   },
 });
@@ -82,6 +82,21 @@ export const archive = mutation({
     if (doc.userId !== userId) throw new Error("Forbidden.");
 
     await ctx.db.patch(doc._id, { isArchived: true });
+  },
+});
+
+export const getTrashDocuments = query({
+  args: {},
+  async handler(ctx, args) {
+    const userIdentity = await ctx.auth.getUserIdentity();
+    if (!userIdentity) throw new Error("Unauthorized");
+
+    const userId = userIdentity.subject;
+    return ctx.db
+      .query("documents")
+      .withIndex("by_user", (query) => query.eq("userId", userId))
+      .filter((query) => query.eq(query.field("isDeleted"), true))
+      .collect();
   },
 });
 

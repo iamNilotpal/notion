@@ -70,7 +70,7 @@ const Documents = ({ level = 0, parentDocId }: IDocumentsProps) => {
   if (documents === undefined)
     return level === 0 ? (
       <div className="mt-4 ml-[7px] w-full pr-6 flex flex-col gap-y-1">
-        {new Array(10).fill(0).map((_, idx) => (
+        {new Array(5).fill(0).map((_, idx) => (
           <DocumentItem.Skeleton
             key={idx}
             level={level}
@@ -78,15 +78,17 @@ const Documents = ({ level = 0, parentDocId }: IDocumentsProps) => {
           />
         ))}
       </div>
-    ) : null;
+    ) : (
+      <DocumentItem.Skeleton level={level} className="pr-4 mt-1" />
+    );
 
   return (
-    <article>
-      {level > 0 && documents.length == 0 && (
+    <article className="ml-[1.5px]">
+      {level > 0 && (
         <p
           style={{ paddingLeft: level ? `${level * 12 + 25}px` : "12px" }}
           className={cn(
-            "hidden text-[13px] font-medium text-muted-foreground/80 mt-[1px]",
+            "hidden text-[13px] font-medium text-muted-foreground/80 mt-[2px] mb-[2px]",
             expanded && "last:block",
             level === 0 && "hidden"
           )}

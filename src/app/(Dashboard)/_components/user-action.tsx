@@ -59,14 +59,14 @@ const UserActionItem = () => {
           </div>
         </div>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer text-muted-foreground p-2 px-4">
-          <SignOutButton>
+        <SignOutButton>
+          <DropdownMenuItem className="cursor-pointer text-muted-foreground p-2 px-4">
             <div className="flex items-center gap-2">
               <LogOut className="w-4 h-4" />
               <span className="text-sm">Sign Out</span>
             </div>
-          </SignOutButton>
-        </DropdownMenuItem>
+          </DropdownMenuItem>
+        </SignOutButton>
       </DropdownMenuContent>
     </DropdownMenu>
   );

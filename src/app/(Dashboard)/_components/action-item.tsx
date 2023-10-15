@@ -33,8 +33,8 @@ const ActionItem = ({
       <Icon className="h-[18px] mr-2" />
       <span className="truncate">{label}</span>
       {isSearch && (
-        <kbd className="ml-auto pointer-events-none select-none rounded border bg-muted px-1.5 font-medium text-muted-foreground font-mono">
-          <span className="text-xs">⌘</span>
+        <kbd className="ml-auto pointer-events-none select-none rounded border bg-muted px-1.5 font-medium text-muted-foreground">
+          <span className="text-[11px]">⌘</span>
           <span className="text-sm ml-[3px]">K</span>
         </kbd>
       )}
