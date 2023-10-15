@@ -72,6 +72,7 @@
   }
 
   body {
+    @apply font-[400] font-sans;
     @apply bg-background text-foreground;
   }
 }

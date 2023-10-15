@@ -9,8 +9,10 @@ import { api } from "../../../../convex/_generated/api";
 import ActionItem from "./action-item";
 import UserActionItem from "./user-action";
 import Documents from "./documents";
+import { useRouter } from "next/navigation";
 
 const Navigation = () => {
+  const router = useRouter();
   const [creating, setCreating] = useState(false);
   const create = useMutation(api.documents.create);
 
@@ -19,6 +21,7 @@ const Navigation = () => {
 
   const handleCreateDocument = async () => {
     setCreating(true);
+
     const promise = create({ title: "Untitled" });
     toast.promise(promise, {
       finally: () => setCreating(false),
@@ -26,6 +29,9 @@ const Navigation = () => {
       error: "Error while creating document.",
       success: "Document created successfully.",
     });
+
+    const doc = await promise;
+    if (doc) router.push(`/documents/${doc}`);
   };
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -84,7 +90,9 @@ const Navigation = () => {
         icon={PlusCircleIcon}
         onClick={handleCreateDocument}
       />
-      <Documents />
+      <div className="mt-4">
+        <Documents />
+      </div>
       <div
         onMouseDown={handleMouseDown}
         className="opacity-0 group-hover/sidebar:opacity-100 transition ease-in cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0 active:w-1"
