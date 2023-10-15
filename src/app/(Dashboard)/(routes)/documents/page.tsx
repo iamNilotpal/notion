@@ -1,15 +1,19 @@
-import { Button } from '@/components/ui/button';
-import { PlusCircle } from 'lucide-react';
-import Greeting from './Greeting';
+import Image from 'next/image';
+import CreateNewDocument from './create-new';
+import Greeting from './greeting';
 
 const DocumentPage = () => {
   return (
     <section className="h-full flex items-center justify-center flex-col gap-2">
+      <Image
+        width={350}
+        height={350}
+        src="/paper-documents.svg"
+        className="bg-transparent"
+        alt="Empty state illustration"
+      />
       <Greeting />
-      <Button className="flex items-center gap-[6px]">
-        <PlusCircle size={16} />
-        <span>Create a document</span>
-      </Button>
+      <CreateNewDocument />
     </section>
   );
 };

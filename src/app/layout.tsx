@@ -1,18 +1,18 @@
-import ConvexProvider from '@/components/ConvexProvider';
-import ThemeProvider from '@/components/ThemeProvider';
-import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
-import './globals.css';
+import ConvexProvider from "@/components/convex-provider";
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import { Toaster } from "sonner";
+import "./globals.css";
 
 const poppins = Poppins({
   preload: true,
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: 'A Fully Featured Notion Clone',
-  description: 'This is a fully featured Notion clone built with Next.JS.',
+  title: "A Fully Featured Notion Clone",
+  description: "This is a fully featured Notion clone built with Next.JS.",
 };
 
 export default function RootLayout({
@@ -24,13 +24,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={poppins.className}>
         <ConvexProvider>
-          <ThemeProvider
-            enableSystem
-            attribute="class"
-            storageKey="theme"
-            defaultTheme="system">
-            {children}
-          </ThemeProvider>
+          {children}
+          <Toaster />
         </ConvexProvider>
       </body>
     </html>

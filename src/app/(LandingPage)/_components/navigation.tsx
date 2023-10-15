@@ -1,7 +1,6 @@
 'use client';
 
-import Spinner from '@/components/Spinner';
-import ThemeSwitcher from '@/components/ThemeSwitcher';
+import Spinner from '@/components/spinner';
 import { Button } from '@/components/ui/button';
 import useScrollTop from '@/hooks/useScrollTop';
 import { cn } from '@/lib/utils';
@@ -33,7 +32,6 @@ const Navbar = () => {
           {isAuthenticated && !isLoading && (
             <UserButton showName afterSignOutUrl="/" />
           )}
-          <ThemeSwitcher />
         </div>
       </div>
     </nav>

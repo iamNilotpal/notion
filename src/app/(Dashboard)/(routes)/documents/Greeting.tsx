@@ -1,6 +1,6 @@
 'use client';
 
-import Spinner from '@/components/Spinner';
+import Spinner from '@/components/spinner';
 import { useUser } from '@clerk/clerk-react';
 import React from 'react';
 

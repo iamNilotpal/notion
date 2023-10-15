@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import React, { ElementRef, useRef } from 'react';
-import UserActionItem from './UserActionItem';
+import UserActionItem from './user-action';
 
 const Navigation = () => {
   const isResizingRef = useRef(false);
@@ -47,11 +47,9 @@ const Navigation = () => {
     <aside
       ref={sidebarRef}
       className={cn(
-        'group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col z-[9999999]'
+        'group/sidebar h-full bg-secondary overflow-y-auto relative flex w-60 flex-col'
       )}>
-      <div>
-        <UserActionItem />
-      </div>
+      <UserActionItem />
       <div
         onMouseDown={handleMouseDown}
         className="opacity-0 group-hover/sidebar:opacity-100 transition ease-in cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0 active:w-1"

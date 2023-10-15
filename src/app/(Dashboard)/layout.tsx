@@ -1,10 +1,10 @@
 'use client';
 
-import Spinner from '@/components/Spinner';
+import Spinner from '@/components/spinner';
 import { useConvexAuth } from 'convex/react';
 import { redirect } from 'next/navigation';
 import React from 'react';
-import Navigation from './_components/Navigation';
+import Navigation from './_components/navigation';
 
 export enum RedirectType {
   push = 'push',
