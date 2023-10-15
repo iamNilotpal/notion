@@ -3,6 +3,7 @@
 import React from "react";
 import { useQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
+import DocumentItem from "./document-item";
 
 const Documents = () => {
   const documents = useQuery(api.documents.getAll);
@@ -11,7 +12,13 @@ const Documents = () => {
   return (
     <div className="mt-4">
       {documents.map((doc) => (
-        <p key={doc._id}>{doc.title}</p>
+        <DocumentItem
+          icon="🔥"
+          expanded
+          id={doc._id}
+          label={doc.title}
+          onClick={() => {}}
+        />
       ))}
     </div>
   );

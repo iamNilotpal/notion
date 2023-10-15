@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { useMutation } from "convex/react";
 import { PlusCircleIcon, SearchIcon, Settings } from "lucide-react";
-import React, { ElementRef, useRef } from "react";
+import React, { ElementRef, useRef, useState } from "react";
 import { toast } from "sonner";
 import { api } from "../../../../convex/_generated/api";
 import ActionItem from "./action-item";
@@ -11,14 +11,17 @@ import UserActionItem from "./user-action";
 import Documents from "./documents";
 
 const Navigation = () => {
+  const [creating, setCreating] = useState(false);
   const create = useMutation(api.documents.create);
 
   const isResizingRef = useRef(false);
   const sidebarRef = useRef<ElementRef<"aside">>(null);
 
   const handleCreateDocument = async () => {
+    setCreating(true);
     const promise = create({ title: "Untitled" });
     toast.promise(promise, {
+      finally: () => setCreating(false),
       loading: "Creating a new document.",
       error: "Error while creating document.",
       success: "Document created successfully.",
@@ -76,8 +79,8 @@ const Navigation = () => {
       />
       <ActionItem label="Settings" icon={Settings} onClick={() => {}} />
       <ActionItem
-        disabled
         label="New Page"
+        disabled={creating}
         icon={PlusCircleIcon}
         onClick={handleCreateDocument}
       />
