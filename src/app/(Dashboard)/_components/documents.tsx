@@ -54,7 +54,7 @@ const Documents = ({ level = 0, parentDocId }: IDocumentsProps) => {
     } catch (error) {}
   };
 
-  const handleAddNewDoc = (docId: Id<"documents">) => {
+  const handleAddNewDoc = async (docId: Id<"documents">) => {
     if (!docId) return;
 
     setInteracting(true);
@@ -65,6 +65,14 @@ const Documents = ({ level = 0, parentDocId }: IDocumentsProps) => {
       error: "Error while creating document.",
       success: "Document created successfully.",
     });
+
+    try {
+      const doc = await promise;
+      if (!doc) return;
+
+      router.push(`/documents/${doc}`);
+      setExpanded((state) => ({ ...state, [docId]: true }));
+    } catch (error) {}
   };
 
   if (documents === undefined)
